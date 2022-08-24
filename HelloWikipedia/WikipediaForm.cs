@@ -15,5 +15,10 @@ namespace HelloWikipedia
         {
             InitializeComponent();
         }
+
+        private void wikiSearchPage_InvokeSearch(object sender, Wikipedia.SearchEventArgs e)
+        {
+            wikiSearchPage.Navigate(e.Keyword);
+        }
     }
 }
