@@ -4,6 +4,7 @@ using Wikipedia.Helper;
 using Wikipedia.WikiSearch.Model;
 using SnowSpace.Extensions.AsyncTasks;
 using SnowSpace.Extensions.HttpTasks;
+using Wikipedia.WikiSearch.Enum;
 
 namespace Wikipedia
 {
@@ -75,7 +76,7 @@ namespace Wikipedia
         /// <returns></returns>
         private bool Search(AsyncTask task, WikiSearchVo wikiSearchVo)
         {
-            if(wikiSearchVo == null)
+            if (wikiSearchVo == null)
             {
                 WikiSearchLogProvider.Trace("入参对象非法");
                 return false;

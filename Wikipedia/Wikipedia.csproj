@@ -52,8 +52,16 @@
     <Compile Include="Helper\BrowserEnvHelper.cs" />
     <Compile Include="Helper\EnumExtensionHelper.cs" />
     <Compile Include="Helper\UrlHelper.cs" />
+    <Compile Include="WikiSearch\Common\MultFlagValueAttribute.cs" />
     <Compile Include="WikiSearch\Common\StringValueAttribute.cs" />
     <Compile Include="Helper\WikiSearchLogProvider.cs" />
+    <Compile Include="WikiSearch\Enum\WikiErrorFormat.cs" />
+    <Compile Include="WikiSearch\Enum\WikiInfo.cs" />
+    <Compile Include="WikiSearch\Enum\WikiNamespace.cs" />
+    <Compile Include="WikiSearch\Enum\WikiProperty.cs" />
+    <Compile Include="WikiSearch\Enum\WikiQueryProfile.cs" />
+    <Compile Include="WikiSearch\Enum\WikiSortOrder.cs" />
+    <Compile Include="WikiSearch\Enum\WikiWhat.cs" />
     <Compile Include="WikiSearch\IWikiSearchService.cs" />
     <Compile Include="SearchEventArgs.cs" />
     <Compile Include="WikiSearchPage.cs">
@@ -64,7 +72,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WikiSearch\Model\IWikiSearchVo.cs" />
-    <Compile Include="WikiSearch\Model\WikiLanguage.cs" />
+    <Compile Include="WikiSearch\Enum\WikiLanguage.cs" />
     <Compile Include="WikiSearch\Model\WikiSearchDto.cs" />
     <Compile Include="WikiSearch\Model\WikiSearchError.cs" />
     <Compile Include="WikiSearch\Model\WikiSearchQueryDto.cs" />

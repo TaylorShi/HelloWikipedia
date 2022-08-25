@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Wikipedia.WikiSearch.Common;
 
-namespace Wikipedia.WikiSearch.Model
+namespace Wikipedia.WikiSearch.Enum
 {
     public enum WikiLanguage
     {

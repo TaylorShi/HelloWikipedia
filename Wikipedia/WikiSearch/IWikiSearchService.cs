@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Wikipedia.WikiSearch.Model;
 using SnowSpace.Extensions.AsyncTasks;
+using Wikipedia.WikiSearch.Enum;
 
 namespace Wikipedia
 {

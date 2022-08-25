@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Wikipedia.WikiSearch.Enum;
 
 namespace Wikipedia.WikiSearch.Model
 {
