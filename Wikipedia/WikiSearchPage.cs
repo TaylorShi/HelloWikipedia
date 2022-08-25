@@ -12,11 +12,39 @@ namespace Wikipedia
 {
     public partial class WikiSearchPage: UserControl
     {
+        /// <summary>
+        /// 回车按钮
+        /// </summary>
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public IButtonControl AcceptButton
+        {
+            get { return this.btnSearch; }
+        }
+
         int LeftCount;
+
+        bool IsDisableUse;
+
+        int FreeLeftCount = 10;
 
         string Keyword => txbSearch.Text?.Trim();
 
         public event EventHandler<SearchEventArgs> InvokeSearch;
+
+        public event EventHandler InvokeSetting;
+
+        public void SetSearchingStatus(bool isSearching)
+        {
+            if (IsDisableUse)
+            {
+                return;
+            }
+
+            btnClear.Enabled = !isSearching;
+            btnSearch.Enabled = !isSearching;
+            btnCopyResult.Enabled = !isSearching;
+            pgbSearching.Enabled = pgbSearching.Visible = isSearching;
+        }
 
         public WikiSearchPage()
         {
@@ -31,10 +59,32 @@ namespace Wikipedia
 
         private void Init()
         {
-            LeftCount = 10;
-            labLeftCount.Text = string.Format(labLeftCount.Text, LeftCount);
+            LeftCount = FreeLeftCount;
+            UpdateLeftCount();
             // 初始化本机浏览器仿真设置
             new BrowserEnvHelper().InitLocalBrowserEmulation();
+        }
+
+        public void UsedLeftCount()
+        {
+            LeftCount--;
+            UpdateLeftCount();
+            if (LeftCount <= 0)
+            {
+                DisableUse();
+            }
+        }
+
+        private void DisableUse()
+        {
+            IsDisableUse = true;
+            btnClear.Enabled = false;
+            btnSearch.Enabled = false;
+        }
+
+        private void UpdateLeftCount()
+        {
+            labLeftCount.Text = string.Format("免费搜索次数: {0}", LeftCount);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -56,7 +106,16 @@ namespace Wikipedia
 
         private void btnCopyResult_Click(object sender, EventArgs e)
         {
+            var docText = wbResultContent.Document.Body.OuterText;
+            if (!string.IsNullOrEmpty(docText))
+            {
+                Clipboard.SetText(docText);
+            }
+        }
 
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            InvokeSetting?.Invoke(sender, e);
         }
     }
 }

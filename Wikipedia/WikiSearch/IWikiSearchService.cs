@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Wikipedia.WikiSearch.Model;
+using SnowSpace.Extensions.AsyncTasks;
 
 namespace Wikipedia
 {
     public interface IWikiSearchService
     {
+        WikiSearchDto SearchResult { get; set; }
+
         /// <summary>
         /// 转换语言
         /// </summary>
@@ -20,6 +23,6 @@ namespace Wikipedia
         /// </summary>
         /// <param name="wikiSearchVo"></param>
         /// <returns></returns>
-        bool Search(WikiSearchVo wikiSearchVo);
+        AsyncTask Search(WikiSearchVo wikiSearchVo);
     }
 }

@@ -32,10 +32,12 @@
             this.pnlResultAction = new System.Windows.Forms.Panel();
             this.btnCopyResult = new System.Windows.Forms.Button();
             this.pnlResultTip = new System.Windows.Forms.Panel();
+            this.btnSetting = new System.Windows.Forms.Button();
             this.labLeftCount = new System.Windows.Forms.Label();
             this.pnlResultContent = new System.Windows.Forms.Panel();
             this.wbResultContent = new System.Windows.Forms.WebBrowser();
             this.pnlResultTitle = new System.Windows.Forms.Panel();
+            this.pgbSearching = new System.Windows.Forms.ProgressBar();
             this.labResultTitle = new System.Windows.Forms.Label();
             this.pnlAction = new System.Windows.Forms.Panel();
             this.pnlActionSearch = new System.Windows.Forms.Panel();
@@ -56,19 +58,19 @@
             // pnlSpace2
             // 
             this.pnlSpace2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlSpace2.Location = new System.Drawing.Point(0, 630);
+            this.pnlSpace2.Location = new System.Drawing.Point(0, 610);
             this.pnlSpace2.MinimumSize = new System.Drawing.Size(0, 8);
             this.pnlSpace2.Name = "pnlSpace2";
-            this.pnlSpace2.Size = new System.Drawing.Size(424, 8);
+            this.pnlSpace2.Size = new System.Drawing.Size(400, 8);
             this.pnlSpace2.TabIndex = 7;
             // 
             // pnlResultAction
             // 
             this.pnlResultAction.Controls.Add(this.btnCopyResult);
             this.pnlResultAction.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlResultAction.Location = new System.Drawing.Point(0, 638);
+            this.pnlResultAction.Location = new System.Drawing.Point(0, 618);
             this.pnlResultAction.Name = "pnlResultAction";
-            this.pnlResultAction.Size = new System.Drawing.Size(424, 32);
+            this.pnlResultAction.Size = new System.Drawing.Size(400, 32);
             this.pnlResultAction.TabIndex = 8;
             // 
             // btnCopyResult
@@ -76,7 +78,7 @@
             this.btnCopyResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCopyResult.Location = new System.Drawing.Point(0, 0);
             this.btnCopyResult.Name = "btnCopyResult";
-            this.btnCopyResult.Size = new System.Drawing.Size(424, 32);
+            this.btnCopyResult.Size = new System.Drawing.Size(400, 32);
             this.btnCopyResult.TabIndex = 0;
             this.btnCopyResult.Text = "复制结果";
             this.btnCopyResult.UseVisualStyleBackColor = true;
@@ -84,13 +86,28 @@
             // 
             // pnlResultTip
             // 
+            this.pnlResultTip.Controls.Add(this.btnSetting);
             this.pnlResultTip.Controls.Add(this.labLeftCount);
             this.pnlResultTip.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlResultTip.Location = new System.Drawing.Point(0, 670);
+            this.pnlResultTip.Location = new System.Drawing.Point(0, 650);
             this.pnlResultTip.Name = "pnlResultTip";
             this.pnlResultTip.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.pnlResultTip.Size = new System.Drawing.Size(424, 32);
+            this.pnlResultTip.Size = new System.Drawing.Size(400, 36);
             this.pnlResultTip.TabIndex = 9;
+            // 
+            // btnSetting
+            // 
+            this.btnSetting.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSetting.Location = new System.Drawing.Point(349, 2);
+            this.btnSetting.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSetting.MinimumSize = new System.Drawing.Size(0, 32);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(51, 32);
+            this.btnSetting.TabIndex = 1;
+            this.btnSetting.Text = "设置";
+            this.btnSetting.UseVisualStyleBackColor = true;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
             // labLeftCount
             // 
@@ -108,7 +125,7 @@
             this.pnlResultContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlResultContent.Location = new System.Drawing.Point(0, 104);
             this.pnlResultContent.Name = "pnlResultContent";
-            this.pnlResultContent.Size = new System.Drawing.Size(424, 598);
+            this.pnlResultContent.Size = new System.Drawing.Size(400, 582);
             this.pnlResultContent.TabIndex = 10;
             // 
             // wbResultContent
@@ -117,24 +134,33 @@
             this.wbResultContent.Location = new System.Drawing.Point(0, 0);
             this.wbResultContent.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbResultContent.Name = "wbResultContent";
-            this.wbResultContent.Size = new System.Drawing.Size(424, 598);
+            this.wbResultContent.Size = new System.Drawing.Size(400, 582);
             this.wbResultContent.TabIndex = 0;
             // 
             // pnlResultTitle
             // 
+            this.pnlResultTitle.Controls.Add(this.pgbSearching);
             this.pnlResultTitle.Controls.Add(this.labResultTitle);
             this.pnlResultTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlResultTitle.Location = new System.Drawing.Point(0, 72);
             this.pnlResultTitle.Name = "pnlResultTitle";
-            this.pnlResultTitle.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.pnlResultTitle.Size = new System.Drawing.Size(424, 32);
+            this.pnlResultTitle.Size = new System.Drawing.Size(400, 32);
             this.pnlResultTitle.TabIndex = 11;
+            // 
+            // pgbSearching
+            // 
+            this.pgbSearching.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pgbSearching.Location = new System.Drawing.Point(0, 0);
+            this.pgbSearching.Name = "pgbSearching";
+            this.pgbSearching.Size = new System.Drawing.Size(400, 2);
+            this.pgbSearching.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.pgbSearching.TabIndex = 1;
+            this.pgbSearching.Visible = false;
             // 
             // labResultTitle
             // 
             this.labResultTitle.AutoSize = true;
-            this.labResultTitle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.labResultTitle.Location = new System.Drawing.Point(0, 10);
+            this.labResultTitle.Location = new System.Drawing.Point(3, 9);
             this.labResultTitle.Name = "labResultTitle";
             this.labResultTitle.Size = new System.Drawing.Size(53, 12);
             this.labResultTitle.TabIndex = 0;
@@ -147,7 +173,7 @@
             this.pnlAction.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlAction.Location = new System.Drawing.Point(0, 40);
             this.pnlAction.Name = "pnlAction";
-            this.pnlAction.Size = new System.Drawing.Size(424, 32);
+            this.pnlAction.Size = new System.Drawing.Size(400, 32);
             this.pnlAction.TabIndex = 12;
             // 
             // pnlActionSearch
@@ -157,7 +183,7 @@
             this.pnlActionSearch.Location = new System.Drawing.Point(0, 0);
             this.pnlActionSearch.Name = "pnlActionSearch";
             this.pnlActionSearch.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
-            this.pnlActionSearch.Size = new System.Drawing.Size(349, 32);
+            this.pnlActionSearch.Size = new System.Drawing.Size(325, 32);
             this.pnlActionSearch.TabIndex = 2;
             // 
             // btnSearch
@@ -166,7 +192,7 @@
             this.btnSearch.Location = new System.Drawing.Point(0, 0);
             this.btnSearch.MinimumSize = new System.Drawing.Size(0, 32);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(341, 32);
+            this.btnSearch.Size = new System.Drawing.Size(317, 32);
             this.btnSearch.TabIndex = 0;
             this.btnSearch.Text = "搜索";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -175,7 +201,7 @@
             // btnClear
             // 
             this.btnClear.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnClear.Location = new System.Drawing.Point(349, 0);
+            this.btnClear.Location = new System.Drawing.Point(325, 0);
             this.btnClear.MinimumSize = new System.Drawing.Size(0, 32);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 32);
@@ -190,7 +216,7 @@
             this.pnlSpace.Location = new System.Drawing.Point(0, 32);
             this.pnlSpace.MinimumSize = new System.Drawing.Size(0, 8);
             this.pnlSpace.Name = "pnlSpace";
-            this.pnlSpace.Size = new System.Drawing.Size(424, 8);
+            this.pnlSpace.Size = new System.Drawing.Size(400, 8);
             this.pnlSpace.TabIndex = 13;
             // 
             // pnlSearch
@@ -202,7 +228,7 @@
             this.pnlSearch.Location = new System.Drawing.Point(0, 0);
             this.pnlSearch.Name = "pnlSearch";
             this.pnlSearch.Padding = new System.Windows.Forms.Padding(8, 8, 8, 2);
-            this.pnlSearch.Size = new System.Drawing.Size(424, 32);
+            this.pnlSearch.Size = new System.Drawing.Size(400, 32);
             this.pnlSearch.TabIndex = 14;
             // 
             // txbSearch
@@ -212,7 +238,7 @@
             this.txbSearch.Location = new System.Drawing.Point(8, 8);
             this.txbSearch.Multiline = true;
             this.txbSearch.Name = "txbSearch";
-            this.txbSearch.Size = new System.Drawing.Size(406, 20);
+            this.txbSearch.Size = new System.Drawing.Size(382, 20);
             this.txbSearch.TabIndex = 0;
             // 
             // WikiSearchPage
@@ -228,7 +254,7 @@
             this.Controls.Add(this.pnlSpace);
             this.Controls.Add(this.pnlSearch);
             this.Name = "WikiSearchPage";
-            this.Size = new System.Drawing.Size(424, 702);
+            this.Size = new System.Drawing.Size(400, 686);
             this.pnlResultAction.ResumeLayout(false);
             this.pnlResultTip.ResumeLayout(false);
             this.pnlResultTip.PerformLayout();
@@ -261,5 +287,7 @@
         private System.Windows.Forms.Panel pnlSpace;
         private System.Windows.Forms.Panel pnlSearch;
         private System.Windows.Forms.TextBox txbSearch;
+        private System.Windows.Forms.ProgressBar pgbSearching;
+        private System.Windows.Forms.Button btnSetting;
     }
 }

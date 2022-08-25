@@ -33,6 +33,12 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net35\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SnowSpace.Extensions.AsyncTasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SnowSpace.Extensions.AsyncTasks.1.0.0\lib\net35\SnowSpace.Extensions.AsyncTasks.dll</HintPath>
+    </Reference>
+    <Reference Include="SnowSpace.Extensions.HttpTasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SnowSpace.Extensions.HttpTasks.1.0.0\lib\net35\SnowSpace.Extensions.HttpTasks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,16 +47,11 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Wondershare.Extensions.AsyncTasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Wondershare.Extensions.AsyncTasks.1.0.0\lib\net35\Wondershare.Extensions.AsyncTasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Wondershare.Extensions.HttpTasks, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Wondershare.Extensions.HttpTasks.1.0.0\lib\net35\Wondershare.Extensions.HttpTasks.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\BrowserEnvHelper.cs" />
     <Compile Include="Helper\EnumExtensionHelper.cs" />
+    <Compile Include="Helper\UrlHelper.cs" />
     <Compile Include="WikiSearch\Common\StringValueAttribute.cs" />
     <Compile Include="Helper\WikiSearchLogProvider.cs" />
     <Compile Include="WikiSearch\IWikiSearchService.cs" />
@@ -65,13 +66,27 @@
     <Compile Include="WikiSearch\Model\IWikiSearchVo.cs" />
     <Compile Include="WikiSearch\Model\WikiLanguage.cs" />
     <Compile Include="WikiSearch\Model\WikiSearchDto.cs" />
+    <Compile Include="WikiSearch\Model\WikiSearchError.cs" />
+    <Compile Include="WikiSearch\Model\WikiSearchQueryDto.cs" />
+    <Compile Include="WikiSearch\Model\WikiSearchQueryInfo.cs" />
+    <Compile Include="WikiSearch\Model\WikiSearchResultDto.cs" />
     <Compile Include="WikiSearch\Model\WikiSearchVo.cs" />
+    <Compile Include="WikiSearch\Model\WikiSearchWarning.cs" />
     <Compile Include="WikiSearch\WikiSearchService.cs" />
+    <Compile Include="WikiSettingPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="WikiSettingPage.Designer.cs">
+      <DependentUpon>WikiSettingPage.cs</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="WikiSearchPage.resx">
       <DependentUpon>WikiSearchPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WikiSettingPage.resx">
+      <DependentUpon>WikiSettingPage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

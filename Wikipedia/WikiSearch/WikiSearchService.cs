@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Wikipedia.Helper;
 using Wikipedia.WikiSearch.Model;
-using Wondershare.Extensions.AsyncTasks;
-using Wondershare.Extensions.HttpTasks;
+using SnowSpace.Extensions.AsyncTasks;
+using SnowSpace.Extensions.HttpTasks;
 
 namespace Wikipedia
 {
     public class WikiSearchService : IWikiSearchService
     {
+        private static string WikiGetPath => "https://{0}.wikipedia.org/w/api.php?{1}";
+
+        public WikiSearchDto SearchResult { get; set; } = new WikiSearchDto();
+
         /// <summary>
         /// 转换语言
         /// </summary>
@@ -61,13 +63,17 @@ namespace Wikipedia
             return wikiLanguage;
         }
 
+        public AsyncTask Search(WikiSearchVo wikiSearchVo)
+        {
+            return AsyncTask.NewTask(Search, wikiSearchVo);
+        }
+
         /// <summary>
         /// 搜索词条
         /// </summary>
         /// <param name="wikiSearchVo"></param>
         /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public bool Search(WikiSearchVo wikiSearchVo)
+        private bool Search(AsyncTask task, WikiSearchVo wikiSearchVo)
         {
             if(wikiSearchVo == null)
             {
@@ -82,33 +88,45 @@ namespace Wikipedia
                 return false;
             }
 
-            var args = new Dictionary<string, string>()
+            var queryParams = new Dictionary<string, string>()
             {
                 // 执行一次全文本搜索
                 ["action"] = "query",
                 ["list"] = "search",
                 // 搜查关键词
+                // https://www.mediawiki.org/w/api.php?action=help&modules=query%2Bsearch
                 ["srsearch"] = searchString,
                 // 返回结果格式
                 ["format"] = "json",
+                // 返回结果格式
+                // https://www.mediawiki.org/wiki/API:JSON_version_2/zh
+                ["formatversion"] = "2",    
                 // 返回错误格式
                 ["errorformat"] = "plaintext"
             };
 
             var wikiLang = wikiSearchVo.Language.GetStringValue();
+            var url = string.Format(WikiGetPath, wikiLang, UrlHelper.CreateQueryString(queryParams));
 
-            var task = new AsyncTask();
-            task.Start();
+            SearchResult = new WikiSearchDto();
+
             var apitask = new HttpTask<WikiSearchDto>(new RequestPara()
             {
-                Url = "http://www.baidu.com",
+                Url = url,
                 Method = HttpMethod.GET
             });
             if (task.ExecuteTask(apitask))
             {
-                var taskResponse = apitask.Result as WikiSearchDto;
+                var wikiSearchDto = apitask.Result as WikiSearchDto;
+                if (wikiSearchDto != null && wikiSearchDto.IsSuccess && wikiSearchDto.FirstResultDto != null)
+                {
+                    wikiSearchDto.Query.SetLanguage(wikiLang);
+                    SearchResult = wikiSearchDto;
+                    return true;
+                } 
             }
-            return true;
+
+            return false;
         }
     }
 }
